@@ -1,0 +1,41 @@
+{% extends 'todo/base.html' %}
+
+{% block title %}Sticky Notes|Create Todo{% endblock %}
+
+{% block content %}
+
+    <div class="container form-heading">
+
+        <div class="row">
+            <h1>Create Todo</h1>
+        </div>
+
+        <div class="row">
+            <form class="authentication-form" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" name="title" id="title" placeholder="Wish Mom at 12">
+                </div>
+                
+                <div class="form-group">
+                <label for="memo">Memo</label>
+                <textarea class="form-control" name="memo" id="memo" rows="4"></textarea>
+                </div>
+
+                <div class="form-check">
+                    <label class="form-check-label" for="important">
+                    Important
+                    </label>
+                    <input class="form-check-input" name="important" type="checkbox" id="important" style="margin-left: 1rem;">
+                </div>
+
+                <div class="form-item">
+                    <button type="submit" class="btn btn-primary mybtn">Create Todo</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+{% endblock %}

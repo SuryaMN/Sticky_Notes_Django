@@ -1,0 +1,27 @@
+{% extends 'todo/base.html' %}
+
+{% block title %}Sticky Notes | Home{% endblock %}
+
+{% block content %}
+
+    {% if message %}
+
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endif %}
+
+    <div class="jumbotron">
+        <h1 class="display-4"><span class="multicolor-text" >Sticky Notes!</span></h1>
+        <p class="lead">Tired of listing out your todos? Use the <b><i>Sticky Notes</i></b> website and list out your todo list quickly and get exciting features to make it interesting!</p>
+        <hr class="my-4">
+        <p>Smash the button below and get started</p>
+        <p class="lead">
+        <a class="btn btn-warning btn-lg" href="{% url 'loginuser' %}" role="button">Get Started</a>
+        </p>
+  </div>
+
+{% endblock %}

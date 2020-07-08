@@ -1,0 +1,47 @@
+{% extends 'todo/base.html' %}
+
+{% block title %}Sticky Notes | Login{% endblock %}
+
+{% block content %}
+
+        <div class="container form-container">
+
+            <div class="row">
+                <h1 class="form-heading">Login</h1>
+            </div>
+
+            <div class="row">
+                <form class="authentication-form" method="POST">
+                    {% csrf_token %}
+
+                    {% if error %}
+                        <div class="alert alert-danger alert-dismissible fade show form-item" role="alert">
+                            {{error}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    {% endif %}
+
+                    <div class="form-group form-item">
+                      <input type="text" class="form-control" name="username" placeholder="Enter Username">
+                    </div>
+
+                    <div class="form-group form-item">
+                      <input type="password" class="form-control" name="password" placeholder="Password">
+                    </div>
+
+                    <div class="form-item">
+                        <button type="submit" class="btn btn-primary mybtn">Login</button>
+                    </div>
+                    <hr>
+                    <div class="form-item">
+                        <p>Don't have an account? <a href="{% url 'signupuser' %}">Create an account</a></p>
+                    </div>
+
+                  </form>
+            </div>
+
+        </div>
+
+  {% endblock %}

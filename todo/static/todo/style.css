@@ -1,0 +1,88 @@
+.navbar-dark .navbar-nav .nav-link{
+    color:white;
+}
+
+.jumbotron,.form-heading,.container{
+    text-align: center;
+    font-family: 'Comfortaa','sans-serif';
+    background:none;
+}
+
+
+.form-container{
+    margin-top:4rem;
+}
+
+.navbar-brand,.jumbotron h1.display-4{
+    font-family: 'Montserrat Subrayada', sans-serif;
+}
+
+.multicolor-text{
+    background-image: linear-gradient(to left, violet, indigo, green, blue, yellow, orange, red);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.container .row {
+    justify-content: center;
+    margin:2rem auto;
+}
+
+form .form-item{
+    display:flex;
+    justify-content: center;
+    margin-top:2rem;
+}
+
+form .form-item button.mybtn{
+    width:100%;
+}
+
+.todo-item{
+    margin:0.5rem auto;
+    width:100%;
+}
+
+.todo-row{
+    margin-top:0 !important;
+    margin-bottom:0 !important;
+}
+
+svg {
+    position: relative;
+    top: 0;
+    transition: top ease 0.5s;
+  }
+svg:hover {
+    top: -10px;
+  }
+
+form.icon-form{
+    display: inline-block;
+}
+
+form.icon-form button{
+    border: none;
+    background:none;
+    cursor: pointer;
+}
+
+@media (min-width:576px){
+    form.authentication-form{
+        min-width:370px;
+    }
+
+    .jumbotron{
+        margin-top: 5rem;
+    }
+
+}
+
+
+@media (min-width:800px){
+    div.row.current-todo-row{
+        width: 60%;
+    }
+}

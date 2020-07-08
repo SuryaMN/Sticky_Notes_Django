@@ -1,0 +1,57 @@
+{% extends 'todo/base.html' %}
+
+{% block title %}Sticky Notes | Todos{% endblock %}
+
+{% block content %}
+    {% csrf_token %}
+    
+    <div class="container ">
+
+        <div class="row">
+            <h1>To-dos</h1>
+        </div>
+
+        <div class="row">
+            <h3>You have {{todos.count}} todo{{todos.count | pluralize}}</h3>
+        </div>
+
+        {% if todos.count == 0 %}
+        <div class="row">
+            <a class="btn btn-warning" href="{% url 'createTodo' %}">Create Todo</a>
+        </div>
+        {% endif %}
+
+        {% for todo in todos %}
+            <div class="row todo-row current-todo-row">
+                {% if todo.important %}
+                    <div class="alert alert-danger todo-item" role="alert">
+                {% else %}
+                    <div class="alert alert-info todo-item" role="alert">
+                {% endif %}
+
+                        <h4 class="alert-heading">
+                            <form method="POST" class="icon-form" action="{% url 'finishTodo' todo.id %}" style="float: left;">
+                                {% csrf_token %}
+                                <button type="submit"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check-all" fill="green" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M8.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992a.252.252 0 0 1 .02-.022zm-.92 5.14l.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486-.943 1.179z"/>
+                                </svg></button>
+                            </form>
+                            <a href="{% url 'viewTodo' todo.id %}" class="todo-item">{{todo.title}}</a>
+                            <form method="POST" class="icon-form" action="{% url 'deleteTodo' todo.id %}" style="float: right;">
+                                {% csrf_token %}
+                            <button type="submit"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="black" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                              </svg></button>
+                            </form>
+                        </h4>
+                        {% if todo.memo %}
+                        <hr style="margin: 0;">
+                        <p class="mb-0">{{todo.memo | truncatechars:15}}</p>
+                        {% endif %}
+                    </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
